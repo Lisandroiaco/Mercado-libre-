@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { BrowserRouter, MemoryRouter, Route, Routes } from 'react-router-dom'
 import { Layout } from './components/Layout'
 import { StoreProvider } from './context/StoreContext'
 import Cart from './pages/Cart'
@@ -30,9 +30,16 @@ export function AppRoutes() {
 export default function App() {
   return (
     <StoreProvider>
-      <BrowserRouter basename={import.meta.env.BASE_URL}>
-        <AppRoutes />
-      </BrowserRouter>
+      {/* VITE_ROUTER=memory is used for the single-file demo build, which runs inside a sandboxed frame. */}
+      {import.meta.env.VITE_ROUTER === 'memory' ? (
+        <MemoryRouter>
+          <AppRoutes />
+        </MemoryRouter>
+      ) : (
+        <BrowserRouter basename={import.meta.env.BASE_URL}>
+          <AppRoutes />
+        </BrowserRouter>
+      )}
     </StoreProvider>
   )
 }
