@@ -6,15 +6,38 @@ Un marketplace estilo e-commerce latinoamericano, hecho como proyecto de portfol
 
 ## ✨ Funcionalidades
 
-- **Home** con banner rotativo, medios de pago, ofertas, categorías, más vendidos y "basado en tu última visita".
-- **Búsqueda** sin tildes ni mayúsculas, que exige que coincidan todas las palabras.
-- **Filtros** por categoría, condición (nuevo/usado), envío gratis y rango de precio, con contadores por opción. Todos viven en la URL, así que se pueden compartir.
-- **Orden** por relevancia o por precio, de menor a mayor y de mayor a menor.
-- **Página de producto** con galería, precio con descuento y cuotas, selector de cantidad limitado por el stock, info del vendedor, preguntas y respuestas (podés hacer preguntas) y opiniones con distribución de estrellas.
-- **Carrito** que se guarda en `localStorage`, con stepper de cantidad, costo de envío y resumen.
-- **Checkout en 3 pasos** (envío → pago → revisión) con validación del formulario y pantalla de confirmación.
-- **Favoritos** e **historial de navegación** que también se guardan.
-- **Diseño responsive** (mobile first) y accesible: labels, `aria-*`, foco visible y navegación por teclado.
+### Navegación y búsqueda
+- **Buscador con autocompletado** (marcas y productos), **búsquedas recientes**, navegación con flechas y atajo <kbd>/</kbd>.
+- **"¿Quisiste decir…?"** con distancia de Levenshtein cuando la búsqueda no da resultados.
+- Búsqueda que ignora tildes y mayúsculas, y exige que coincidan todas las palabras.
+- **Filtros** por categoría, marca, condición, calificación, envío gratis, FULL y precio, con contadores por opción. Todo vive en la URL.
+- **6 formas de ordenar**: relevancia, menor y mayor precio, mejor calificados, mayor descuento y más nuevos.
+- **Vista en lista o grilla** (se recuerda) y **paginación**.
+
+### Productos
+- 59 productos en 10 categorías, con **variantes** (color/talle), etiquetas de "Más vendido", "Recomendado" y "Últimas unidades".
+- **Galería con zoom** que sigue el mouse.
+- **Calculadora de envío por código postal**: estándar, express y retiro, con fecha estimada.
+- **Historial de precios** de 6 meses en un gráfico SVG.
+- **Comprados juntos frecuentemente**, con botón para sumar todo al carrito.
+- **Preguntas** con atajos y buscador, y **opiniones** con filtro por estrellas y formulario para escribir la tuya.
+- **Comparador** de hasta 3 productos lado a lado, que marca el más barato y el mejor calificado.
+- Página de **vendedor** con reputación y productos, y sección de **tiendas oficiales**.
+
+### Compra
+- **Mini-carrito lateral** al agregar productos.
+- **Cupones** (`MERCADITO10`, `BIENVENIDA`, `ENVIOGRATIS`), **guardar para después** y **barra de progreso hacia el envío gratis**.
+- **Checkout en 3 pasos** con elección de entrega, **tarjeta validada con Luhn**, detección de Visa, Mastercard y Amex, y vista previa de la tarjeta.
+- **Mis compras** con **seguimiento del envío**, que avanza solo para la demo, y botón de **volver a comprar**.
+
+### Cuenta y extras
+- **Login y registro** de prueba, con cuenta demo en un clic.
+- **Vender**: publicá un producto con vista previa en vivo, y aparece al instante en la búsqueda y en la home.
+- **Modo oscuro** (claro, oscuro o según el sistema), hecho redefiniendo los tokens de color.
+- **Ofertas relámpago** con cuenta regresiva hasta la medianoche.
+- Notificaciones (toasts), **barra inferior tipo app en el celular**, botón para volver arriba, link para saltar al contenido, newsletter y **centro de ayuda** con buscador.
+- Todo se guarda en `localStorage`: carrito, favoritos, historial, compras, publicaciones, opiniones y tema.
+- Diseño responsive y accesible: roles ARIA, combobox accesible, foco visible y soporte para `prefers-reduced-motion`.
 
 ## 🧱 Stack
 
@@ -39,7 +62,8 @@ npm run dev        # http://localhost:5173
 Otros scripts:
 
 ```bash
-npm test           # tests unitarios y de integración
+npm test           # 44 tests unitarios y de integración
+npm run build:single  # build en un solo HTML (demo/mercadito.html)
 npm run lint       # linter
 npm run build      # build de producción en dist/
 npm run preview    # sirve el build
@@ -52,8 +76,8 @@ src/
 ├── components/   # Header, Footer, ProductCard, ProductRow, Price, Stars…
 ├── context/      # Estado global: carrito, favoritos, historial
 ├── data/         # Catálogo de productos y categorías (mock)
-├── lib/          # Lógica pura y testeada: búsqueda, carrito, formato, validación
-├── pages/        # Home, Search, ProductDetail, Cart, Checkout, Collection, NotFound
+├── lib/          # Lógica pura y testeada: búsqueda, carrito, cupones, tarjetas, envíos, compras
+├── pages/        # Home, Search, ProductDetail, Cart, Checkout, Orders, Compare, Sell, Seller, Login, Help…
 └── App.tsx       # Rutas
 ```
 
@@ -70,7 +94,5 @@ Incluye `vercel.json` con el rewrite que necesita una SPA. En Vercel o Netlify a
 ## 🗺️ Próximos pasos
 
 - [ ] Backend real (Node/Express o Supabase) con usuarios y órdenes.
-- [ ] Login y perfil de usuario.
-- [ ] Publicar productos (flujo de vendedor).
 - [ ] Integrar la API pública de productos de algún marketplace.
 - [ ] Paginación y búsqueda con sugerencias.

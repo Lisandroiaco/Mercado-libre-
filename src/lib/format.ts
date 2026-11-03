@@ -21,3 +21,10 @@ export function formatSold(sold: number): string {
   if (sold >= 100) return `+${Math.floor(sold / 100) * 100} vendidos`
   return `${sold} vendidos`
 }
+
+/** Milliseconds until the next midnight, when the "deals of the day" reset. */
+export function msUntilMidnight(now = new Date()): number {
+  const end = new Date(now)
+  end.setHours(24, 0, 0, 0)
+  return end.getTime() - now.getTime()
+}

@@ -26,7 +26,7 @@ export function ProductImage({ product, variant = 0, className = '', iconClassNa
     <div
       role="img"
       aria-label={product.title}
-      className={`relative flex items-center justify-center overflow-hidden ${className}`}
+      className={`relative flex items-center justify-center overflow-hidden dark:brightness-[0.82] ${className}`}
       style={{ background: `radial-gradient(circle at 30% 25%, hsl(${hue} 90% 97%), hsl(${hue} 70% 88%))` }}
     >
       <div

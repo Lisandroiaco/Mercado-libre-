@@ -1,4 +1,4 @@
-import { Dumbbell, Gamepad2, Laptop, Shirt, Smartphone, Sofa, Tv, Wrench, type LucideIcon } from 'lucide-react'
+import { Dumbbell, Gamepad2, Laptop, PawPrint, Shirt, Smartphone, Sofa, Sparkles, Tv, Wrench, type LucideIcon } from 'lucide-react'
 import type { CategoryId } from '../types'
 
 export const categoryIcons: Record<CategoryId, LucideIcon> = {
@@ -10,4 +10,6 @@ export const categoryIcons: Record<CategoryId, LucideIcon> = {
   moda: Shirt,
   juguetes: Gamepad2,
   herramientas: Wrench,
+  belleza: Sparkles,
+  mascotas: PawPrint,
 }

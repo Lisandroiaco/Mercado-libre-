@@ -7,6 +7,8 @@ export type CategoryId =
   | 'moda'
   | 'juguetes'
   | 'herramientas'
+  | 'belleza'
+  | 'mascotas'
 
 export interface Category {
   id: CategoryId
@@ -52,9 +54,46 @@ export interface Product {
   attributes: Record<string, string>
   reviews: Review[]
   questions: Question[]
+  /** Selectable options such as color or size. */
+  variants?: { name: string; options: string[] }
+  /** True for products the user published from the "Vender" page. */
+  userListing?: boolean
 }
 
 export interface CartItem {
   productId: string
   quantity: number
+  variant?: string
+}
+
+export type DeliveryMethod = 'standard' | 'express' | 'pickup'
+export type PaymentMethod = 'card' | 'transfer' | 'cash'
+
+export interface OrderLine {
+  productId: string
+  title: string
+  price: number
+  quantity: number
+  variant?: string
+}
+
+export interface Order {
+  id: string
+  /** ISO timestamp. */
+  date: string
+  lines: OrderLine[]
+  subtotal: number
+  shipping: number
+  discount: number
+  total: number
+  coupon?: string
+  delivery: DeliveryMethod
+  payment: PaymentMethod
+  installments: number
+  address: { name: string; street: string; city: string; zip: string; phone: string }
+}
+
+export interface User {
+  name: string
+  email: string
 }

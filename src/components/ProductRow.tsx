@@ -36,7 +36,7 @@ export function ProductRow({ title, action, products }: Props) {
             type="button"
             aria-label={dir < 0 ? 'Anterior' : 'Siguiente'}
             onClick={() => scroll(dir as 1 | -1)}
-            className={`absolute top-1/3 hidden size-12 place-items-center rounded-full bg-white text-primary shadow-lg transition hover:scale-105 md:grid ${
+            className={`absolute top-1/3 hidden size-12 place-items-center rounded-full bg-surface text-primary shadow-lg transition hover:scale-105 md:grid ${
               dir < 0 ? '-left-5' : '-right-5'
             }`}
           >
