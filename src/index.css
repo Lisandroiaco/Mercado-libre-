@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand: #ffe600;
+  --color-brand-dark: #f5d800;
+  --color-ink: #2d3277;
+  --color-primary: #3483fa;
+  --color-primary-dark: #2968c8;
+  --color-success: #00a650;
+  --color-page: #ededed;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+  @apply bg-page text-neutral-800 antialiased;
+}
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
